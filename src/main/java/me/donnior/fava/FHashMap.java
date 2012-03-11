@@ -14,7 +14,7 @@ public class FHashMap<K, V> extends HashMap<K, V> implements FMap<K, V>{
 		super(map);
 	}
 
-	@Override
+	
 	public void deleteIf(MPredict<K, V> predict) {
 		Iterator<Entry<K,V>> it = this.entrySet().iterator();
 		while(it.hasNext()){
@@ -25,7 +25,7 @@ public class FHashMap<K, V> extends HashMap<K, V> implements FMap<K, V>{
 		}	
 	}
 
-	@Override
+	
 	public void each(MFunction<K, V> function) {
 		Iterator<Entry<K,V>> it = this.entrySet().iterator();
 		while(it.hasNext()){
@@ -34,7 +34,7 @@ public class FHashMap<K, V> extends HashMap<K, V> implements FMap<K, V>{
 		}
 	}
 
-	@Override
+	
 	public void merge(Map<K, V> map) {
 		Iterator<Entry<K,V>> it = map.entrySet().iterator();
 		while(it.hasNext()){
@@ -43,7 +43,7 @@ public class FHashMap<K, V> extends HashMap<K, V> implements FMap<K, V>{
 		}
 	}
 
-	@Override
+	
 	public FMap<K, V> reject(MPredict<K, V> predict) {
 		FHashMap<K,V> result = new FHashMap<K, V>();
 		Iterator<Entry<K,V>> it = this.entrySet().iterator();
@@ -58,7 +58,7 @@ public class FHashMap<K, V> extends HashMap<K, V> implements FMap<K, V>{
 		return result;
 	}
 
-	@Override
+	
 	public FMap<K, V> select(MPredict<K, V> predict) {
 		FHashMap<K,V> result = new FHashMap<K, V>();
 		Iterator<Entry<K,V>> it = this.entrySet().iterator();

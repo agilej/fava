@@ -21,7 +21,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 //		}
 	}
 	
-	@Override
+	
 	public E find(Predict<E> function) {
 		Iterator<E> it = this.iterator();
 		while(it.hasNext()){
@@ -45,7 +45,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 		return result;
 	}
 
-	@Override
+	
 	public <T> FList<T> collect(Function<E, T> function) {
 		FArrayList<T> result = new FArrayList<T>();
 		Iterator<E> it = this.iterator();
@@ -55,7 +55,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 		return result;
 	}
 
-	@Override
+	
 	public void each(EachFunction<E> function) {
 		Iterator<E> it = this.iterator();
 		while(it.hasNext()){
@@ -63,7 +63,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 		}	
 	}
 
-	@Override
+	
 	public E at(int index) {
 		if(index >= 0){
 			return this.get(index);
@@ -72,7 +72,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 		}
 	}
 
-	@Override
+	
 	public FList<E> compact() {
 		FArrayList<E> result = new FArrayList<E>();
 		Iterator<E> it = this.iterator();
@@ -85,7 +85,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 		return result;
 	}
 
-	@Override
+	
 	public E first() {
 		if(this.isEmpty()) {
 			return null;
@@ -93,7 +93,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 		return this.get(0);
 	}
 
-	@Override
+	
 	public E last() {
 		if(this.isEmpty()) {
 			return null;
@@ -101,12 +101,12 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 		return this.get(this.size() - 1);
 	}
 
-	@Override
+	
 	public FList<E> select(Predict<E> predict) {
 		return this.findAll(predict);
 	}
 
-	@Override
+	
 	public FList<E> deleteIf(Predict<E> predict) {
 		Iterator<E> it = this.iterator();
 		while(it.hasNext()){
@@ -118,7 +118,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 		return this;
 	}
 	
-	@Override
+	
 	public FList<E> reject(Predict<E> predict) {
 		FArrayList<E> result = new FArrayList<E>();
 		Iterator<E> it = this.iterator();
@@ -131,12 +131,12 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 		return result;
 	}
 	
-	@Override
+	
 	public boolean any(Predict<E> function) {
 		return this.find(function) != null;
 	}
 		
-	@Override
+	
 	public boolean all(Predict<E> function){
 		Iterator<E> it = this.iterator();
 		while(it.hasNext()){
@@ -148,7 +148,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 		return true;		
 	}
 
-	@Override
+	
 	public int count(Predict<E> function) {
 		int count = 0;
 		Iterator<E> it = this.iterator();
