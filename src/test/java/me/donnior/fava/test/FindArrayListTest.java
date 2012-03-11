@@ -17,7 +17,7 @@ import me.donnior.fava.util.FLists;
 
 import org.junit.Test;
 
-public class FindFirstTest {
+public class FindArrayListTest {
 
 	@Test
 	public void testFindOne() {

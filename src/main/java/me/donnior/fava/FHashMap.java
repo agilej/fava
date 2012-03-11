@@ -3,7 +3,7 @@ package me.donnior.fava;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Map.Entry;
+
 //import java.util.Map.Entry;
 
 public class FHashMap<K, V> extends HashMap<K, V> implements FMap<K, V>{
