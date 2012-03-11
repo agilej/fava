@@ -16,9 +16,6 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 	
 	public FArrayList(List<E> list){
 		super(list);
-//		for(E e : list){
-//			this.add(e);
-//		}
 	}
 	
 	

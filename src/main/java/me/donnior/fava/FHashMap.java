@@ -8,6 +8,12 @@ import java.util.Map.Entry;
 
 public class FHashMap<K, V> extends HashMap<K, V> implements FMap<K, V>{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2695835995810261605L;
+
+
 	public FHashMap(){ }
 	
 	public FHashMap(Map<K,V> map){
@@ -35,12 +41,14 @@ public class FHashMap<K, V> extends HashMap<K, V> implements FMap<K, V>{
 	}
 
 	
-	public void merge(Map<K, V> map) {
+	public FMap<K,V> merge(Map<K, V> map) {
+		FHashMap<K,V> result = new FHashMap<K, V>();
 		Iterator<Entry<K,V>> it = map.entrySet().iterator();
 		while(it.hasNext()){
 			Entry<K,V> entry = it.next();
-			this.put(entry.getKey(), entry.getValue());
+			result.put(entry.getKey(), entry.getValue());
 		}
+		return result;
 	}
 
 	
@@ -60,6 +68,10 @@ public class FHashMap<K, V> extends HashMap<K, V> implements FMap<K, V>{
 
 	
 	public FMap<K, V> select(MPredict<K, V> predict) {
+		return this.findAll(predict);
+	}
+	
+	public FMap<K, V> findAll(MPredict<K, V> predict) {
 		FHashMap<K,V> result = new FHashMap<K, V>();
 		Iterator<Entry<K,V>> it = this.entrySet().iterator();
 		while(it.hasNext()){
@@ -72,5 +84,6 @@ public class FHashMap<K, V> extends HashMap<K, V> implements FMap<K, V>{
 		}
 		return result;
 	}
+	
 
 }
