@@ -174,6 +174,13 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 		return result;
 	}
 	
-	
+	public FList<E> push(E...elements){
+		if(elements != null){
+			for(E e : elements){
+				this.add(e);
+			}
+		}
+		return this;
+	}	
 	
 }

@@ -15,6 +15,7 @@ public class FHashMapTest {
 	@Test
 	public void testEach(){
 		final FMap<Integer, String> c = prepareList();
+		assertEquals("10", c.get(10));
 		c.each(new MFunction<Integer, String>(){
 			public void apply(Integer key, String value) {
 				if(key ==10){

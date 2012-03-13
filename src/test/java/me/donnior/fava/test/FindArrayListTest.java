@@ -182,6 +182,15 @@ public class FindArrayListTest {
 		
 		FList<A> top5 = c.top(5);
 		assertEquals(3, top5.size());		
+	}
+
+	@Test
+	public void testPush(){
+		FList<Integer> list = FLists.create(1,2,3);
+		assertEquals(3, list.size());
+		list.push(4,5,6);
+		assertEquals(6, list.size());
+		assertTrue(5 == list.at(4));
 	}		
 	
 

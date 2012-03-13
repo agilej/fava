@@ -30,5 +30,7 @@ public interface FList<E> extends List<E>, FCollection<E>{
 	FList<E> top(int n);
 	
 	<T> FList<T> collect(Function<E, T> function);
+
+	FList<E> push(E...elements);
 	
 }
