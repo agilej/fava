@@ -11,6 +11,7 @@ import java.util.List;
 import me.donnior.fava.EachFunction;
 import me.donnior.fava.FCollection;
 import me.donnior.fava.FList;
+import me.donnior.fava.FoldFunction;
 import me.donnior.fava.Function;
 import me.donnior.fava.Predict;
 import me.donnior.fava.util.FLists;
@@ -192,6 +193,28 @@ public class FindArrayListTest {
 		assertEquals(6, list.size());
 		assertTrue(5 == list.at(4));
 	}		
+	
+	@Test
+	public void testFold(){
+		FList<Integer> list = FLists.create(1,2,3);
+		int result = list.fold(new FoldFunction<Integer, Integer>(){
+			public Integer apply(Integer element, Integer init) {
+				return element + init;
+			}
+		}, 0);
+		assertEquals(6, result);
+		
+		
+		List<Integer> container = new ArrayList<Integer>();
+		List<Integer> containerResult = list.fold(new FoldFunction<Integer, List<Integer>>(){
+			public List<Integer> apply(Integer element, List<Integer> init) {
+				init.add(element);
+				return init;
+			}
+		}, container);
+		assertEquals(3, containerResult.size());
+		
+	}
 	
 
 	private FList<A> prepareList() {

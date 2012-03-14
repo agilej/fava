@@ -182,5 +182,15 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 		}
 		return this;
 	}	
+
+	public <T> T fold(FoldFunction<E, T> f, T init){
+		Iterator<E> it = this.iterator();
+		T result = init;
+		while(it.hasNext()){
+			E e = it.next();
+			result = f.apply(e, result);
+		}
+		return result;
+	}
 	
 }
