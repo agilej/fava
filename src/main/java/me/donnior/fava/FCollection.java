@@ -53,6 +53,13 @@ public interface FCollection<E> extends Collection<E> {
 	<T> FCollection<T> collect(Function<E, T> function);
 	
 	/**
+     * alias method for {@link #collect(Function)}
+     * @param function
+     * @return
+     */
+    <T> FCollection<T> map(Function<E, T> function);
+	
+	/**
 	 * Calls function once for each element in self, passing that element as a parameter.
 	 * @param function
 	 */
