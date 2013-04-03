@@ -21,6 +21,8 @@ public interface FList<E> extends List<E>, FCollection<E>{
 	
 	FList<E> select(Predict<E> predict);
 	
+	<T> FList<T> map(Function<E, T> function);
+	
 	FList<E> deleteIf(Predict<E> predict);
 	
 	FList<E> reject(Predict<E> predict);

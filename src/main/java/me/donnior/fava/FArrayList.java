@@ -52,7 +52,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 		return result;
 	}
 	
-	public <T> FCollection<T> map(Function<E, T> function) {
+	public <T> FList<T> map(Function<E, T> function) {
 	    return this.collect(function);
 	}
 

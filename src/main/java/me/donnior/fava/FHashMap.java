@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-//import java.util.Map.Entry;
-
 public class FHashMap<K, V> extends HashMap<K, V> implements FMap<K, V>{
 	
 	/**
@@ -42,7 +40,7 @@ public class FHashMap<K, V> extends HashMap<K, V> implements FMap<K, V>{
 
 	
 	public FMap<K,V> merge(Map<K, V> map) {
-		FHashMap<K,V> result = new FHashMap<K, V>();
+		FHashMap<K,V> result = new FHashMap<K, V>(this);
 		Iterator<Entry<K,V>> it = map.entrySet().iterator();
 		while(it.hasNext()){
 			Entry<K,V> entry = it.next();

@@ -5,8 +5,10 @@ import java.util.List;
 import me.donnior.fava.FArrayList;
 import me.donnior.fava.FList;
 
-public class FLists {
+public final class FLists {
 	
+    private FLists(){}
+    
 	public static <T> FList<T> create(List<T> array){
 		return new FArrayList<T>(array);
 	}

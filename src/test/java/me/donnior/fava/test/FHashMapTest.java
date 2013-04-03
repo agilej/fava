@@ -1,7 +1,12 @@
 package me.donnior.fava.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import me.donnior.fava.FHashMap;
 import me.donnior.fava.FMap;
 import me.donnior.fava.MFunction;
@@ -53,8 +58,33 @@ public class FHashMapTest {
 		assertEquals(3, c.size());
 		assertEquals(2, result.size());
 		assertNull(result.get(1000));
-	}	
-		
+	}
+	
+    @Test
+    public void testSelect(){
+        FMap<Integer, String> c = prepareList();
+        FMap<Integer, String> result = c.select(new MPredict<Integer, String> (){
+            public boolean apply(Integer key, String value) {
+                return key > 10;
+            }
+        });
+        assertEquals(1, result.size());
+        assertNotNull(result.get(1000));
+    }	
+
+    @Test
+    public void testMerge(){
+        FMap<Integer, String> c = prepareList();
+        
+        Map<Integer, String> mapToMerge = new HashMap<Integer, String>();
+        mapToMerge.put(1, "one");
+        mapToMerge.put(10000, "10000");
+        
+        FMap<Integer, String> result = c.merge(mapToMerge);
+        assertEquals(4, result.size());
+        assertEquals("one", result.get(1));
+    }   
+    
 
 	private FMap<Integer, String> prepareList() {
 		FMap<Integer, String> map = new FHashMap<Integer, String>();

@@ -20,7 +20,7 @@ import me.donnior.fava.util.FLists;
 
 import org.junit.Test;
 
-public class FindArrayListTest {
+public class FArrayListTest {
 
 	@Test
 	public void testFindOne() {
@@ -57,8 +57,8 @@ public class FindArrayListTest {
 	
 	@Test
 	public void testMap(){
-		FCollection<A> c = prepareList();
-		FCollection<B> as = c.collect(new Function<A,B>(){	
+	    FList<A> c = prepareList();
+	    FList<B> as = c.map(new Function<A,B>(){	
 			public B apply(A a){
 				return new B(a.i * 2);
 			}
