@@ -1,4 +1,3 @@
-
 Fava is a functional  library for java, it's an extention for Java collection framework.
 
 ## User Fava List
@@ -8,14 +7,12 @@ The two essential class is `FList` and `FArrayList`. `FList` extends JDK's `List
 ### Create Fava List
 
 Create from exist list
-
 ```java
     List originalList = ....   //JDK list
     FList fList = new FArrayList(originalList);
 ```
 
 Because `FArrayList` extends `ArrayList`, you also can create it directly
-
 ```java
     List<String> fList = new FArrayList<String>();
     fList.add("one");  //use jdk's function
