@@ -16,7 +16,7 @@ public interface FMap<K, V> extends Map<K,V>{
 	 * Calls function once for each entry in self, passing that element as a parameter.
 	 * @param function
 	 */
-	void each(MFunction<K, V> function);
+	void each(MConsumer<K, V> function);
 
 	/**
 	 * Returns a new hash containing the contents of other_map and the contents of map. 

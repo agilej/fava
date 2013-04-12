@@ -13,7 +13,7 @@ public interface FList<E> extends List<E>, FCollection<E>{
 	
 	E find(Predict<E> function);
 
-	void each(EachFunction<E> function);
+	void each(Consumer<E> function);
 	
 	boolean any(Predict<E> function);
 	

@@ -9,7 +9,7 @@ import java.util.Map;
 
 import me.donnior.fava.FHashMap;
 import me.donnior.fava.FMap;
-import me.donnior.fava.MFunction;
+import me.donnior.fava.MConsumer;
 import me.donnior.fava.MPredict;
 
 import org.junit.Test;
@@ -21,7 +21,7 @@ public class FHashMapTest {
 	public void testEach(){
 		final FMap<Integer, String> c = prepareList();
 		assertEquals("10", c.get(10));
-		c.each(new MFunction<Integer, String>(){
+		c.each(new MConsumer<Integer, String>(){
 			public void apply(Integer key, String value) {
 				if(key ==10){
 					c.put(key, "ten");

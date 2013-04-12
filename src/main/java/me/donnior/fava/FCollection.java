@@ -63,7 +63,7 @@ public interface FCollection<E> extends Collection<E> {
 	 * Calls function once for each element in self, passing that element as a parameter.
 	 * @param function
 	 */
-	void each(EachFunction<E> function);
+	void each(Consumer<E> function);
 	
 	/**
 	 * Returns a copy of self with all null elements removed.

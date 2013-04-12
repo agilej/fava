@@ -30,7 +30,7 @@ public class FHashMap<K, V> extends HashMap<K, V> implements FMap<K, V>{
 	}
 
 	
-	public void each(MFunction<K, V> function) {
+	public void each(MConsumer<K, V> function) {
 		Iterator<Entry<K,V>> it = this.entrySet().iterator();
 		while(it.hasNext()){
 			Entry<K,V> entry = it.next();

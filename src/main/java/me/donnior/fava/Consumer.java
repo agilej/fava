@@ -1,6 +1,6 @@
 package me.donnior.fava;
 
-public interface EachFunction<E> {
+public interface Consumer<E> {
 	
 	void apply(E e);
 

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import me.donnior.fava.EachFunction;
+import me.donnior.fava.Consumer;
 import me.donnior.fava.FArrayList;
 import me.donnior.fava.FCollection;
 import me.donnior.fava.FList;
@@ -76,7 +76,7 @@ public class FArrayListTest {
 	@Test
 	public void testEach(){
 		FCollection<A> c = prepareList();
-		c.each(new EachFunction<A>(){
+		c.each(new Consumer<A>(){
 			public void apply(A e) {
 				e.i = e.i + 10;
 			}

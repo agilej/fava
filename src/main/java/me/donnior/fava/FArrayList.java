@@ -57,11 +57,11 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 	}
 
 	
-	public void each(EachFunction<E> function) {
+	public void each(Consumer<E> function) {
 		Iterator<E> it = this.iterator();
 		while(it.hasNext()){
 			function.apply(it.next());
-		}	
+		}
 	}
 
 	
