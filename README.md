@@ -1,4 +1,3 @@
-#Fava
 
 Fava is a functional  library for java, it's an extention for Java collection framework.
 
