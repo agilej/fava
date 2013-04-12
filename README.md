@@ -7,14 +7,12 @@ The two essential class is `FList` and `FArrayList`. `FList` extends JDK's `List
 ### Create Fava List
 
 Create from exist list
-
 ```java
     List originalList = ....   //JDK list
     FList fList = new FArrayList(originalList);
 ```
 
 Because `FArrayList` extends `ArrayList`, you also can create it directly
-
 ```java
     List<String> fList = new FArrayList<String>();
     fList.add("one");  //use jdk's function
@@ -24,7 +22,7 @@ Because `FArrayList` extends `ArrayList`, you also can create it directly
 
 Suppose you have a `FList` contains [1,2,3,4,5]
 
-    `FList<Integer> ints = FLists.create(1,2,3,4,5);`
+    FList<Integer> ints = FLists.create(1,2,3,4,5);
 
 Each operation
 
