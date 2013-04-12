@@ -235,6 +235,14 @@ public class FArrayListTest {
 		}, container);
 		assertEquals(3, containerResult.size());
 		
+		list = FLists.create(1,2,3,4);
+        result = list.fold(new FoldFunction<Integer, Integer>(){
+            public Integer apply(Integer element, Integer init) {
+                return element * init;
+            }
+        }, 1);
+        assertEquals(24, result);
+		
 	}
 	
 
@@ -244,7 +252,6 @@ public class FArrayListTest {
 		list.add(new A(12));
 		list.add(new A(234));
 		return FLists.create(list);
-//		return FLists.create(new A(8), new A(12), new A(234));
 	}
 
 }
