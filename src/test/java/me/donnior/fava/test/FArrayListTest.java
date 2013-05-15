@@ -218,29 +218,29 @@ public class FArrayListTest {
 	@Test
 	public void testFold(){
 		FList<Integer> list = FLists.create(1,2,3);
-		int result = list.fold(new FoldFunction<Integer, Integer>(){
+		int result = list.fold(0, new FoldFunction<Integer, Integer>(){
 			public Integer apply(Integer element, Integer init) {
 				return element + init;
 			}
-		}, 0);
+		});
 		assertEquals(6, result);
 		
 		
 		List<Integer> container = new ArrayList<Integer>();
-		List<Integer> containerResult = list.fold(new FoldFunction<Integer, List<Integer>>(){
+		List<Integer> containerResult = list.fold(container, new FoldFunction<Integer, List<Integer>>(){
 			public List<Integer> apply(Integer element, List<Integer> init) {
 				init.add(element);
 				return init;
 			}
-		}, container);
+		});
 		assertEquals(3, containerResult.size());
 		
 		list = FLists.create(1,2,3,4);
-        result = list.fold(new FoldFunction<Integer, Integer>(){
+        result = list.fold(1, new FoldFunction<Integer, Integer>(){
             public Integer apply(Integer element, Integer init) {
                 return element * init;
             }
-        }, 1);
+        });
         assertEquals(24, result);
 		
 	}

@@ -54,6 +54,6 @@ public interface FList<E> extends List<E>, FCollection<E>{
 	 */
 	FList<E> push(E...elements);
 	
-	<T> T fold(FoldFunction<E, T> function, T init);
+	<T> T fold(T init, FoldFunction<E, T> function);
 	
 }

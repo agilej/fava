@@ -12,3 +12,5 @@ target/
 .classpath
 
 .DS_Store
+
+nb-configuration.xml
