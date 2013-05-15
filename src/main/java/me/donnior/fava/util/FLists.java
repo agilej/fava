@@ -6,23 +6,24 @@ import me.donnior.fava.FArrayList;
 import me.donnior.fava.FList;
 
 public final class FLists {
-	
-    private FLists(){}
-    
-	public static <T> FList<T> create(List<T> array){
-		return new FArrayList<T>(array);
-	}
-	
-	public static <T> FList<T> create(T... t){
-		FList<T> list = new FArrayList<T>();
-		for(T temp : t){
-			list.add(temp);
-		}
-		return list;
-	}
-	
-    public static <T> FList<T> newEmptyList(){
+
+    private FLists() {
+    }
+
+    public static <T> FList<T> create(List<T> array) {
+        return new FArrayList<T>(array);
+    }
+
+    public static <T> FList<T> create(T... t) {
+        FList<T> list = new FArrayList<T>();
+        for (T temp : t) {
+            list.add(temp);
+        }
+        return list;
+    }
+
+    public static <T> FList<T> newEmptyList() {
         return new FArrayList<T>();
-    }	
-	
+    }
+
 }
