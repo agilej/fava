@@ -138,8 +138,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
         int count = 0;
         Iterator<E> it = this.iterator();
         while (it.hasNext()) {
-            E e = it.next();
-            if (function.apply(e)) {
+            if (function.apply(it.next())) {
                 count += 1;
             }
         }
@@ -162,6 +161,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
         return result;
     }
 
+    @SuppressWarnings("unchecked")
     public FList<E> push(E... elements) {
         if (elements != null) {
             for (E e : elements) {

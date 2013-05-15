@@ -34,20 +34,20 @@ Each operation
     });
 ```
     
-Find the first     element match the prediction
+Find the first element match the Predicate
 
 ```java
-    int result = int.find(new Predict<Integer>(){    
+    int result = int.find(new Predicate<Integer>(){    
         public boolean apply(Integer e){
             return e > 3;
         }
     });
 ```
     
-Find all elements match the prediction
+Find all elements match the Predicate
 
 ```java
-    FList<Integer> results = ints.findAll(new Predict<Integer>(){
+    FList<Integer> results = ints.findAll(new Predicate<Integer>(){
         public boolean apply(Integer e){
             return e % 2 == 0;  //the int value is even
         }
@@ -63,20 +63,20 @@ Convert list to another different type list, use `map()` or `collect()`
     });
 ```
 
-Judge is there any element match prediction
+Judge is there any element match Predicate
 
 ```java
-    boolean hasAnyBiggerThanThree = ints.any(new Predict<Integer>(){
+    boolean hasAnyBiggerThanThree = ints.any(new Predicate<Integer>(){
         public boolean apply(Integer e) {
             return e > 3;
         }
     });
    ```
  
-Judge all elements match prediction
+Judge all elements match Predicate
 
 ```java
-    boolean allBiggerThanThree = ints.all(new Predict<Integer>(){
+    boolean allBiggerThanThree = ints.all(new Predicate<Integer>(){
         public boolean apply(Integer e) {
             return e > 3;
         }
@@ -99,5 +99,5 @@ There are more functions such as `reject`, `deleteIf`, please see Fava' java doc
 There are three basic function shape in fava. 
 
 * _Consumer_  - operate on object and not return
-* _Predict_ - operate on object and return bool value
+* _Predicate_ - operate on object and return bool value
 * _Function_ - operaton on object and return another value

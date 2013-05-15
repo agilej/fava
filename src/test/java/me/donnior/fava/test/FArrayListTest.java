@@ -130,6 +130,14 @@ public class FArrayListTest {
 			}
 		});
 		assertEquals(1, c.size());
+
+		FList<Integer> fi = FLists.create(10, 23, 56);
+		assertEquals(2, fi.deleteIf(new Predicate<Integer>() {
+            @Override
+            public boolean apply(Integer e) {
+                return e > 50;
+            }
+        }).size());
 	}	
 	
 	
