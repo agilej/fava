@@ -1,5 +1,5 @@
 package me.donnior.fava;
 
-public interface Predict<E> {
+public interface Predicate<E> {
 	boolean apply(E e);
 }

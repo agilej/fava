@@ -1,13 +1,13 @@
 package me.donnior.fava.functions;
 
-import me.donnior.fava.Predict;
+import me.donnior.fava.Predicate;
 
 public final class IntFunctions {
     
     private IntFunctions(){}
 
-	public static Predict<Integer> biggerThan(final int i){
-		return new  Predict<Integer>(){
+	public static Predicate<Integer> biggerThan(final int i){
+		return new  Predicate<Integer>(){
 			public boolean apply(Integer e) {
 				return e > i;
 			}
@@ -16,7 +16,7 @@ public final class IntFunctions {
 	}
 	
 	
-	public static final Predict<Integer> EVEN =	new  Predict<Integer>(){
+	public static final Predicate<Integer> EVEN =	new  Predicate<Integer>(){
 		public boolean apply(Integer e) {
 			return e % 2 == 0;
 		}

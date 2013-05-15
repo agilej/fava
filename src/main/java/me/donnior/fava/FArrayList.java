@@ -19,7 +19,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 	}
 	
 	
-	public E find(Predict<E> function) {
+	public E find(Predicate<E> function) {
 		Iterator<E> it = this.iterator();
 		while(it.hasNext()){
 			E e = it.next();
@@ -30,7 +30,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 		return null;
 	}
 	
-	public FList<E> findAll(Predict<E> function){
+	public FList<E> findAll(Predicate<E> function){
 		FArrayList<E> result = new FArrayList<E>();
 		Iterator<E> it = this.iterator();
 		while(it.hasNext()){
@@ -103,12 +103,12 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 	}
 
 	
-	public FList<E> select(Predict<E> predict) {
+	public FList<E> select(Predicate<E> predict) {
 		return this.findAll(predict);
 	}
 
 	
-	public FList<E> deleteIf(Predict<E> predict) {
+	public FList<E> deleteIf(Predicate<E> predict) {
 		Iterator<E> it = this.iterator();
 		while(it.hasNext()){
 			E e = it.next();
@@ -120,7 +120,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 	}
 	
 	
-	public FList<E> reject(Predict<E> predict) {
+	public FList<E> reject(Predicate<E> predict) {
 		FArrayList<E> result = new FArrayList<E>();
 		Iterator<E> it = this.iterator();
 		while(it.hasNext()){
@@ -133,12 +133,12 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 	}
 	
 	
-	public boolean any(Predict<E> function) {
+	public boolean any(Predicate<E> function) {
 		return this.find(function) != null;
 	}
 		
 	
-	public boolean all(Predict<E> function){
+	public boolean all(Predicate<E> function){
 		Iterator<E> it = this.iterator();
 		while(it.hasNext()){
 			E e = it.next();
@@ -150,7 +150,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 	}
 
 	
-	public int count(Predict<E> function) {
+	public int count(Predicate<E> function) {
 		int count = 0;
 		Iterator<E> it = this.iterator();
 		while(it.hasNext()){

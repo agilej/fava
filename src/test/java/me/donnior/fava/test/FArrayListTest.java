@@ -15,7 +15,7 @@ import me.donnior.fava.FCollection;
 import me.donnior.fava.FList;
 import me.donnior.fava.FoldFunction;
 import me.donnior.fava.Function;
-import me.donnior.fava.Predict;
+import me.donnior.fava.Predicate;
 import me.donnior.fava.util.FLists;
 
 import org.junit.Test;
@@ -25,7 +25,7 @@ public class FArrayListTest {
 	@Test
 	public void testFindOne() {
 		FCollection<A> c = prepareList();
-		A a = c.find(new Predict<A>(){	
+		A a = c.find(new Predicate<A>(){	
 			public boolean apply(A a){
 				return a.i > 10;
 			}
@@ -36,7 +36,7 @@ public class FArrayListTest {
 	@Test
 	public void testFindAll(){
 		FList<A> c = prepareList();
-		FList<A> as = c.findAll(new Predict<A>(){	
+		FList<A> as = c.findAll(new Predicate<A>(){	
 			public boolean apply(A a){
 				return a.i > 10;
 			}
@@ -47,7 +47,7 @@ public class FArrayListTest {
     @Test
     public void testSelect(){
         FList<A> c = prepareList();
-        FList<A> as = c.select(new Predict<A>(){   
+        FList<A> as = c.select(new Predicate<A>(){   
             public boolean apply(A a){
                 return a.i > 10;
             }
@@ -124,7 +124,7 @@ public class FArrayListTest {
 	@Test
 	public void testDeleteIf(){
 		FList<A> c = prepareList();
-		c.deleteIf(new Predict<A>(){
+		c.deleteIf(new Predicate<A>(){
 			public boolean apply(A e) {
 				return e.i == 8 || e.i == 234;
 			}
@@ -136,7 +136,7 @@ public class FArrayListTest {
 	@Test
 	public void testReject(){
 		FList<A> c = prepareList();
-		FList<A> result = c.reject(new Predict<A>(){
+		FList<A> result = c.reject(new Predicate<A>(){
 			public boolean apply(A e) {
 				return e.i == 8 || e.i == 234;
 			}
@@ -149,12 +149,12 @@ public class FArrayListTest {
 	@Test
 	public void testAny(){
 		FList<A> c = prepareList();
-		boolean hasI8 = c.any(new Predict<A>(){
+		boolean hasI8 = c.any(new Predicate<A>(){
 			public boolean apply(A e) {
 				return e.i == 8;
 			}
 		});
-		boolean hasI1 = c.any(new Predict<A>(){
+		boolean hasI1 = c.any(new Predicate<A>(){
 			public boolean apply(A e) {
 				return e.i == 11;
 			}
@@ -167,12 +167,12 @@ public class FArrayListTest {
 	@Test
 	public void testAll(){
 		FList<A> c = prepareList();
-		boolean isAllBiggerThan7 = c.all(new Predict<A>(){
+		boolean isAllBiggerThan7 = c.all(new Predicate<A>(){
 			public boolean apply(A e) {
 				return e.i > 7;
 			}
 		});
-		boolean isAllBiggerThan20 = c.all(new Predict<A>(){
+		boolean isAllBiggerThan20 = c.all(new Predicate<A>(){
 			public boolean apply(A e) {
 				return e.i > 20;
 			}
@@ -185,7 +185,7 @@ public class FArrayListTest {
 	@Test
 	public void testCount(){
 		FList<A> c = prepareList();
-		int count = c.count(new Predict<A>(){
+		int count = c.count(new Predicate<A>(){
 			public boolean apply(A e) {
 				return e.i > 70;
 			}

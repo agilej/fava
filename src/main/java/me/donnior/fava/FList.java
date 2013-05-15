@@ -25,21 +25,21 @@ public interface FList<E> extends List<E>, FCollection<E>{
      */
 	E last();
 	
-	E find(Predict<E> function);
+	E find(Predicate<E> function);
 
 	void each(Consumer<E> function);
 	
-	boolean any(Predict<E> function);
+	boolean any(Predicate<E> function);
 	
-	FList<E> findAll(Predict<E> predict);
+	FList<E> findAll(Predicate<E> predict);
 	
-	FList<E> select(Predict<E> predict);
+	FList<E> select(Predicate<E> predict);
 	
 	<T> FList<T> map(Function<E, T> function);
 	
-	FList<E> deleteIf(Predict<E> predict);
+	FList<E> deleteIf(Predicate<E> predict);
 	
-	FList<E> reject(Predict<E> predict);
+	FList<E> reject(Predicate<E> predict);
 
 	FList<E> compact();
 	

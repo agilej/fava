@@ -11,7 +11,7 @@ public interface FCollection<E> extends Collection<E> {
 	 * @param function
 	 * @return
 	 */
-	E find(Predict<E> function);
+	E find(Predicate<E> function);
 
 	/**
 	 * 
@@ -20,15 +20,15 @@ public interface FCollection<E> extends Collection<E> {
 	 * @param predict
 	 * @return
 	 */
-	FCollection<E> findAll(Predict<E> predict);
+	FCollection<E> findAll(Predicate<E> predict);
 	
 	/**
-	 * alias method for {@link #findAll(Predict)}
+	 * alias method for {@link #findAll(Predicate)}
 	 * 
 	 * @param predict
 	 * @return
 	 */
-	FCollection<E> select(Predict<E> predict);
+	FCollection<E> select(Predicate<E> predict);
 	
 	/**
 	 * Deletes every element of self for which predict evaluates to true. 
@@ -36,14 +36,14 @@ public interface FCollection<E> extends Collection<E> {
 	 * @param predict
 	 * @return
 	 */
-	FCollection<E> deleteIf(Predict<E> predict);
+	FCollection<E> deleteIf(Predicate<E> predict);
 
 	/**
 	 * Returns a new collection containing the items in self for which the block is not true
 	 * @param predict
 	 * @return
 	 */
-	FCollection<E> reject(Predict<E> predict);
+	FCollection<E> reject(Predicate<E> predict);
 	
 	/**
 	 * Invokes function once for each element of self. Creates a new array containing the values returned by the function
@@ -77,7 +77,7 @@ public interface FCollection<E> extends Collection<E> {
 	 * @param function
 	 * @return
 	 */
-	boolean any(Predict<E> function);
+	boolean any(Predicate<E> function);
 	
 	
 	/**
@@ -86,7 +86,7 @@ public interface FCollection<E> extends Collection<E> {
 	 * @param function
 	 * @return
 	 */
-	boolean all(Predict<E> function);
+	boolean all(Predicate<E> function);
 	
 	
 	/**
@@ -94,7 +94,7 @@ public interface FCollection<E> extends Collection<E> {
 	 * @param function
 	 * @return
 	 */
-	int count(Predict<E> function);
+	int count(Predicate<E> function);
 	
 	
 	/**
