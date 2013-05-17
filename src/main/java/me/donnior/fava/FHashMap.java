@@ -18,7 +18,7 @@ public class FHashMap<K, V> extends HashMap<K, V> implements FMap<K, V> {
         super(map);
     }
 
-    public void deleteIf(MPredict<K, V> predict) {
+    public void deleteIf(MPredicate<K, V> predict) {
         Iterator<Entry<K, V>> it = this.entrySet().iterator();
         while (it.hasNext()) {
             Entry<K, V> entry = it.next();
@@ -46,7 +46,7 @@ public class FHashMap<K, V> extends HashMap<K, V> implements FMap<K, V> {
         return result;
     }
 
-    public FMap<K, V> reject(MPredict<K, V> predict) {
+    public FMap<K, V> reject(MPredicate<K, V> predict) {
         FHashMap<K, V> result = new FHashMap<K, V>();
         Iterator<Entry<K, V>> it = this.entrySet().iterator();
         while (it.hasNext()) {
@@ -60,11 +60,11 @@ public class FHashMap<K, V> extends HashMap<K, V> implements FMap<K, V> {
         return result;
     }
 
-    public FMap<K, V> select(MPredict<K, V> predict) {
+    public FMap<K, V> select(MPredicate<K, V> predict) {
         return this.findAll(predict);
     }
 
-    public FMap<K, V> findAll(MPredict<K, V> predict) {
+    public FMap<K, V> findAll(MPredicate<K, V> predict) {
         FHashMap<K, V> result = new FHashMap<K, V>();
         Iterator<Entry<K, V>> it = this.entrySet().iterator();
         while (it.hasNext()) {
@@ -77,5 +77,32 @@ public class FHashMap<K, V> extends HashMap<K, V> implements FMap<K, V> {
         }
         return result;
     }
+    
+    @Override
+    public K findKey(MPredicate<K, V> predicate) {
+        Iterator<Entry<K, V>> it = this.entrySet().iterator();
+        while (it.hasNext()) {
+            Entry<K, V> entry = it.next();
+            K key = entry.getKey();
+            V value = entry.getValue();
+            if (predicate.apply(key, value)) {
+                return key;
+            }
+        }
+        return null;
+    }
 
+    @Override
+    public Map.Entry<K, V> findEntry(MPredicate<K, V> predicate) {
+        Iterator<Entry<K, V>> it = this.entrySet().iterator();
+        while (it.hasNext()) {
+            Entry<K, V> entry = it.next();
+            K key = entry.getKey();
+            V value = entry.getValue();
+            if (predicate.apply(key, value)) {
+                return entry;
+            }
+        }
+        return null;
+    }    
 }

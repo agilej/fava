@@ -1,6 +1,6 @@
 package me.donnior.fava;
 
-public interface MPredict<K, V> {
+public interface MPredicate<K, V> {
 
     boolean apply(K key, V value);
 

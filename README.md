@@ -85,11 +85,11 @@ Judge all elements match Predicate
 Fold operation, such as sum list
 
 ```java
-    int result = ints.fold(new FoldFunction<Integer, Integer>(){
+    int result = ints.fold(0, new FoldFunction<Integer, Integer>(){
         public Integer apply(Integer element, Integer init) {
             return element + init;
         }
-    }, 0);
+    });
    ``` 
     
 There are more functions such as `reject`, `deleteIf`, please see Fava' java doc.     

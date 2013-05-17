@@ -12,7 +12,7 @@ public interface FMap<K, V> extends Map<K, V> {
      * @param predict
      * @return
      */
-    void deleteIf(MPredict<K, V> predict);
+    void deleteIf(MPredicate<K, V> predicate);
 
     /**
      * Calls function once for each entry in self, passing that element as a
@@ -38,7 +38,7 @@ public interface FMap<K, V> extends Map<K, V> {
      * @param predict
      * @return
      */
-    FMap<K, V> reject(MPredict<K, V> predict);
+    FMap<K, V> reject(MPredicate<K, V> predicate);
 
     /**
      * 
@@ -47,7 +47,7 @@ public interface FMap<K, V> extends Map<K, V> {
      * @param predict
      * @return
      */
-    FMap<K, V> findAll(MPredict<K, V> predict);
+    FMap<K, V> findAll(MPredicate<K, V> predicate);
 
     /**
      * alias method for {@link #findAll(Predict)}
@@ -55,6 +55,21 @@ public interface FMap<K, V> extends Map<K, V> {
      * @param predict
      * @return
      */
-    FMap<K, V> select(MPredict<K, V> predict);
+    FMap<K, V> select(MPredicate<K, V> predicate);
+    
+    /**
+     * find the first entry key which match the predicate
+     * @param predictate
+     * @return
+     */
+    K findKey(MPredicate<K,V> predicate);
+    
+    /**
+     * 
+     * find the first entry key which match the predicate
+     * @param predicate
+     * @return
+     */
+    Map.Entry<K, V> findEntry(MPredicate<K, V> predicate);
 
 }
