@@ -12,7 +12,6 @@ public final class IntFunctions {
             public boolean apply(Integer e) {
                 return e > i;
             }
-
         };
     }
 
@@ -21,5 +20,17 @@ public final class IntFunctions {
             return e % 2 == 0;
         }
     };
+    
+    public static Predicate<Integer> mod(final int divide, final int expectRemainder ) {
+        return new Predicate<Integer>() {
+            public boolean apply(Integer e) {
+                return e % divide == expectRemainder;
+            }
+        };
+    }
 
+    public static Predicate<Integer> mod(final int divide) {
+        return mod(divide, 0);
+    }
+    
 }

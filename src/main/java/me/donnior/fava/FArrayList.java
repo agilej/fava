@@ -15,6 +15,19 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
         super(list);
     }
 
+    public int indexOf(Predicate<E> function) {
+        Iterator<E> it = this.iterator();
+        int index = -1;
+        while (it.hasNext()) {
+            E e = it.next();
+            index++;
+            if (function.apply(e)) {
+                return index;
+            }
+        }
+        return -1;
+    }
+    
     public E find(Predicate<E> function) {
         Iterator<E> it = this.iterator();
         while (it.hasNext()) {
@@ -57,6 +70,17 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
             function.apply(it.next());
         }
     }
+    
+    
+    public void eachIndex(Consumer<Integer> function) {
+        Iterator<E> it = this.iterator();
+        int index = 0;
+        while (it.hasNext()) {
+            it.next();
+            function.apply(index++);
+        }
+    }
+    
 
     public E at(int index) {
         if (index >= 0) {
@@ -161,7 +185,6 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
         return result;
     }
 
-    @SuppressWarnings("unchecked")
     public FList<E> push(E... elements) {
         if (elements != null) {
             for (E e : elements) {

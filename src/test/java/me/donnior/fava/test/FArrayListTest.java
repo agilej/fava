@@ -22,6 +22,31 @@ import org.junit.Test;
 
 public class FArrayListTest {
 
+    @Test
+    public void testIndexOf() {
+        FCollection<A> c = prepareList();
+        int index = c.indexOf(new Predicate<A>(){    
+            public boolean apply(A a){
+                return a.i > 10;
+            }
+        });
+        assertEquals(1, index);
+        
+        index = c.indexOf(new Predicate<A>(){    
+            public boolean apply(A a){
+                return a.i > 0;
+            }
+        });
+        assertEquals(0, index);
+        
+        index = c.indexOf(new Predicate<A>(){    
+            public boolean apply(A a){
+                return a.i > 1000;
+            }
+        });
+        assertEquals(-1, index);
+    }
+    
 	@Test
 	public void testFindOne() {
 		FCollection<A> c = prepareList();
@@ -87,6 +112,23 @@ public class FArrayListTest {
 		assertEquals(22, it.next().i);
 		assertEquals(244, it.next().i);
 	}
+	
+	@Test
+    public void testEachIndex(){
+        FCollection<A> c = prepareList();
+        
+        final FList<Integer> is = FLists.newEmptyList();
+        c.eachIndex(new Consumer<Integer>() {
+            @Override
+            public void apply(Integer e) {
+                is.add(e);
+            }
+        });
+        
+        assertTrue(is.size() == 3);
+        assertTrue(0 == is.first());
+        assertTrue(2 == is.last());
+    }
 
 	@Test
 	public void testAt(){

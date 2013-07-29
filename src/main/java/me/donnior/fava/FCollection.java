@@ -5,6 +5,12 @@ import java.util.Collection;
 public interface FCollection<E> extends Collection<E> {
 
     /**
+     * Returns the index of the first object for which the block returns true. 
+     * Returns -1 if no match is found.
+     */
+    int indexOf(Predicate<E> function);
+    
+    /**
      * Return the first element which match the predict
      * 
      * @param function
@@ -78,6 +84,12 @@ public interface FCollection<E> extends Collection<E> {
      * @param function
      */
     void each(Consumer<E> function);
+    
+    /**
+     * Same as {@link #each}, but passes the index of the element instead of the element itself. 
+     */
+    void eachIndex(Consumer<Integer> function);
+    
 
     /**
      * Returns a copy of self with all null elements removed.

@@ -57,7 +57,6 @@ public interface FList<E> extends List<E>, FCollection<E> {
      * @param elements
      * @return
      */
-    @SuppressWarnings("unchecked")
     FList<E> push(E... elements);
 
     <T> T fold(T init, FoldFunction<E, T> function);
