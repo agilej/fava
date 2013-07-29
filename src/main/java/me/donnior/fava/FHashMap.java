@@ -11,13 +11,13 @@ public class FHashMap<K, V> extends HashMap<K, V> implements FMap<K, V> {
 	 */
     private static final long serialVersionUID = 2695835995810261605L;
 
-    public FHashMap() {
-    }
+    public FHashMap() {}
 
     public FHashMap(Map<K, V> map) {
         super(map);
     }
 
+    @StateModified
     public void deleteIf(MPredicate<K, V> predict) {
         Iterator<Entry<K, V>> it = this.entrySet().iterator();
         while (it.hasNext()) {

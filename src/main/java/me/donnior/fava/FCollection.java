@@ -39,20 +39,23 @@ public interface FCollection<E> extends Collection<E> {
      * Deletes every element of self for which predict evaluates to true. The
      * collection is changed instantly every time the block is called and not
      * after the iteration is over
-     * 
+     * <br />
+     * <br />
      * This method is different from {@link #reject(Predicate)}, it will change 
      * the caller list self.
      * 
      * @param predict
      * @return
      */
+    @StateModified
     FCollection<E> deleteIf(Predicate<E> predict);
 
     /**
      * Returns a new collection containing the items in self for which the block
      * is not true.
-     * 
-     * This method is differenct from {@link #deleteIf(Predicate)}, it will not 
+     * <br />
+     * <br />
+     * This method is different from {@link #deleteIf(Predicate)}, it will not 
      * change the caller list, the result list is a new list.
      * 
      * @param predict

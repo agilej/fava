@@ -12,6 +12,7 @@ public interface FMap<K, V> extends Map<K, V> {
      * @param predict
      * @return
      */
+    @StateModified
     void deleteIf(MPredicate<K, V> predicate);
 
     /**

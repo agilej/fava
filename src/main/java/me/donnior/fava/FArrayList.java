@@ -1,20 +1,19 @@
 package me.donnior.fava;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
-import java.util.List;
 import java.util.ListIterator;
 
 public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 
     private static final long serialVersionUID = 1L;
 
-    public FArrayList() {
-    }
+    public FArrayList() {}
 
-    public FArrayList(List<E> list) {
+    public FArrayList(Collection<E> list) {
         super(list);
     }
 
@@ -121,6 +120,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
         return this.findAll(predict);
     }
 
+    @StateModified
     public FList<E> deleteIf(Predicate<E> predict) {
         Iterator<E> it = this.iterator();
         while (it.hasNext()) {
@@ -186,6 +186,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
         return result;
     }
 
+    @StateModified
     public FList<E> push(E... elements) {
         if (elements != null) {
             for (E e : elements) {
@@ -205,14 +206,13 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
         return result;
     }
     
-    
-    
+    @StateModified
     public FList<E> sort(Comparator<? super E> comparator) {
         Collections.sort(this, comparator);
         return this;
     }
     
-    
+    @StateModified
     public <T extends Comparable<T>> FList<E> sortBy(final Function<E, T> function) {
         Comparator<E> c = new Comparator<E>() {
             public int compare(E e1, E e2) {

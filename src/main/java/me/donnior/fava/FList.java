@@ -42,6 +42,7 @@ public interface FList<E> extends List<E>, FCollection<E> {
 
     <T> FList<T> map(Function<E, T> function);
 
+    @StateModified
     FList<E> deleteIf(Predicate<E> predict);
 
     FList<E> reject(Predicate<E> predict);
@@ -58,6 +59,7 @@ public interface FList<E> extends List<E>, FCollection<E> {
      * @param elements
      * @return
      */
+    @StateModified
     FList<E> push(E... elements);
 
     <T> T fold(T init, FoldFunction<E, T> function);
@@ -67,8 +69,10 @@ public interface FList<E> extends List<E>, FCollection<E> {
      * @param comparator
      * @return
      */
+    @StateModified
     FList<E> sort(Comparator<? super E> comparator);
     
+    @StateModified
     <T extends Comparable<T>> FList<E> sortBy(Function<E, T> function);
 
 }
