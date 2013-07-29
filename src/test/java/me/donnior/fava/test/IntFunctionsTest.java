@@ -29,9 +29,9 @@ public class IntFunctionsTest {
         assertTrue(IntFunctions.mod(3).apply(6));
         assertFalse(IntFunctions.mod(5).apply(6));
         
-        int result = FLists.range(1, 1000).findAll(IntFunctions.mod(3)).fold(0, new FoldFunction<Integer, Integer>() {
+        int result = FLists.range(1, 10).findAll(IntFunctions.mod(3)).fold(1, new FoldFunction<Integer, Integer>() {
             public Integer apply(Integer element, Integer init) {
-                return element + init;
+                return element * init;
             }
         });
         

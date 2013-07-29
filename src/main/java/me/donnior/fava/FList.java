@@ -1,5 +1,6 @@
 package me.donnior.fava;
 
+import java.util.Comparator;
 import java.util.List;
 
 public interface FList<E> extends List<E>, FCollection<E> {
@@ -60,5 +61,14 @@ public interface FList<E> extends List<E>, FCollection<E> {
     FList<E> push(E... elements);
 
     <T> T fold(T init, FoldFunction<E, T> function);
+    
+    /**
+     * sort current list and return it self.
+     * @param comparator
+     * @return
+     */
+    FList<E> sort(Comparator<E> comparator);
+    
+    <T extends Comparable<T>> FList<E> sortBy(Function<E, T> function);
 
 }

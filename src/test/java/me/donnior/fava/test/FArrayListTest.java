@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -263,6 +264,38 @@ public class FArrayListTest {
 		list.push(null);
 		assertEquals(6, list.size());
 	}		
+	
+	@Test
+	public void testSort(){
+	    FList<Integer> list = FLists.create(2,3,1,5,6,4,8,7);
+	    list = list.sort(new Comparator<Integer>() {
+            
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1 - o2;
+            }
+        });
+	    assertTrue(1 == list.first());
+	    assertTrue(8 == list.last());
+	    assertTrue(5 == list.at(4));
+        
+	}
+	
+	@Test
+    public void testSortBy(){
+        FList<A> list = prepareList();
+        list = list.sortBy(new Function<A, Integer>() {
+
+            @Override
+            public Integer apply(A e) {
+                return -e.i;
+            }
+            
+        });
+        assertTrue(234 == list.first().i);
+        assertTrue(8 == list.last().i);
+        
+    }
 	
 	@Test
 	public void testFold(){

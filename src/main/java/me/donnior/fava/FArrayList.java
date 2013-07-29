@@ -1,8 +1,11 @@
 package me.donnior.fava;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 
@@ -16,11 +19,10 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
     }
 
     public int indexOf(Predicate<E> function) {
-        Iterator<E> it = this.iterator();
-        int index = -1;
+        ListIterator<E> it = this.listIterator();
         while (it.hasNext()) {
+            int index = it.nextIndex();
             E e = it.next();
-            index++;
             if (function.apply(e)) {
                 return index;
             }
@@ -81,7 +83,6 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
         }
     }
     
-
     public E at(int index) {
         if (index >= 0) {
             return this.get(index);
@@ -202,6 +203,23 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
             result = function.apply(e, result);
         }
         return result;
+    }
+    
+    @Override
+    public FList<E> sort(Comparator<E> comparator) {
+        Collections.sort(this, comparator);
+        return this;
+    }
+    
+    @Override
+    public <T extends Comparable<T>> FList<E> sortBy(final Function<E, T> function) {
+        Comparator<E> c = new Comparator<E>() {
+            public int compare(E e1, E e2) {
+                return function.apply(e1).compareTo(function.apply(e2));
+            }
+        };
+        Collections.sort(this, c);
+        return this;
     }
 
 }
