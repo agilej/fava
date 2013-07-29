@@ -205,13 +205,14 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
         return result;
     }
     
-    @Override
-    public FList<E> sort(Comparator<E> comparator) {
+    
+    
+    public FList<E> sort(Comparator<? super E> comparator) {
         Collections.sort(this, comparator);
         return this;
     }
     
-    @Override
+    
     public <T extends Comparable<T>> FList<E> sortBy(final Function<E, T> function) {
         Comparator<E> c = new Comparator<E>() {
             public int compare(E e1, E e2) {

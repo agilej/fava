@@ -67,7 +67,7 @@ public interface FList<E> extends List<E>, FCollection<E> {
      * @param comparator
      * @return
      */
-    FList<E> sort(Comparator<E> comparator);
+    FList<E> sort(Comparator<? super E> comparator);
     
     <T extends Comparable<T>> FList<E> sortBy(Function<E, T> function);
 
