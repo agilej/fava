@@ -34,6 +34,9 @@ public interface FCollection<E> extends Collection<E> {
      * collection is changed instantly every time the block is called and not
      * after the iteration is over
      * 
+     * This method is different from {@link #reject(Predicate)}, it will change 
+     * the caller list self.
+     * 
      * @param predict
      * @return
      */
@@ -41,7 +44,10 @@ public interface FCollection<E> extends Collection<E> {
 
     /**
      * Returns a new collection containing the items in self for which the block
-     * is not true
+     * is not true.
+     * 
+     * This method is differenct from {@link #deleteIf(Predicate)}, it will not 
+     * change the caller list, the result list is a new list.
      * 
      * @param predict
      * @return

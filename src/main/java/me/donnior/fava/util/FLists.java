@@ -25,5 +25,16 @@ public final class FLists {
     public static <T> FList<T> newEmptyList() {
         return new FArrayList<T>();
     }
+    
+    public static FList<Integer> range(int start, int end){
+        if(start > end){
+            throw new IllegalArgumentException("a range's end must greater than start");
+        }
+        FArrayList<Integer> array = new FArrayList<Integer>();
+        for(int i=start; i<=end; i++){
+            array.add(i);
+        }
+        return array;
+    }
 
 }
