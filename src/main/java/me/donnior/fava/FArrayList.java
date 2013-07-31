@@ -206,6 +206,19 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
         return result;
     }
     
+    public E reduce(FoldFunction<E, E> function) {
+        Iterator<E> it = this.iterator();
+        if(!it.hasNext()){
+            throw new RuntimeException("reduce operation can'b be called with empty array");
+        }
+        E result = it.next();
+        while (it.hasNext()) {
+            E e = it.next();
+            result = function.apply(e, result);
+        }
+        return result;
+    }
+    
     @StateModified
     public FList<E> sort(Comparator<? super E> comparator) {
         Collections.sort(this, comparator);
@@ -223,4 +236,20 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
         return this;
     }
 
+    @Override
+    public <T> FMap<T, FList<E>> groupBy(final Function<E, T> function) {
+        final FMap<T, FList<E>> map = new FHashMap<T, FList<E>>();
+        this.each(new Consumer<E>() {
+            public void apply(E e) {
+                T t = function.apply(e);
+                FList<E> list = map.get(t);
+                if(list == null){
+                   map.put(t, new FArrayList<E>());
+                   list = map.get(t);
+                }
+                list.add(e);
+            }
+        });
+        return map;
+    }
 }

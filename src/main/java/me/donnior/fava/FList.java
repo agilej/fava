@@ -64,7 +64,10 @@ public interface FList<E> extends List<E>, FCollection<E> {
 
     <T> T fold(T init, FoldFunction<E, T> function);
     
+    E reduce(FoldFunction<E, E> function);
+    
     /**
+     * 
      * sort current list and return it self.
      * @param comparator
      * @return

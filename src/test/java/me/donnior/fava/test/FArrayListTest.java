@@ -1,5 +1,6 @@
 package me.donnior.fava.test;
 
+import static me.donnior.fava.util.FLists.$;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
@@ -13,7 +14,9 @@ import java.util.List;
 import me.donnior.fava.Consumer;
 import me.donnior.fava.FArrayList;
 import me.donnior.fava.FCollection;
+import me.donnior.fava.FHashMap;
 import me.donnior.fava.FList;
+import me.donnior.fava.FMap;
 import me.donnior.fava.FoldFunction;
 import me.donnior.fava.Function;
 import me.donnior.fava.Predicate;
@@ -307,7 +310,15 @@ public class FArrayListTest {
 		});
 		assertEquals(6, result);
 		
+		list = FLists.create(1,2,3,4);
+		result = list.fold(1, new FoldFunction<Integer, Integer>(){
+		    public Integer apply(Integer element, Integer init) {
+		        return element * init;
+		    }
+		});
+		assertEquals(24, result);
 		
+		list = FLists.create(1,2,3,4);
 		List<Integer> container = new ArrayList<Integer>();
 		List<Integer> containerResult = list.fold(container, new FoldFunction<Integer, List<Integer>>(){
 			public List<Integer> apply(Integer element, List<Integer> init) {
@@ -315,17 +326,75 @@ public class FArrayListTest {
 				return init;
 			}
 		});
-		assertEquals(3, containerResult.size());
+		assertEquals(4, containerResult.size());
 		
-		list = FLists.create(1,2,3,4);
-        result = list.fold(1, new FoldFunction<Integer, Integer>(){
+        
+        list = FLists.create(1,2,3,4);
+        FMap<Integer, Integer> resultMap = 
+                list.fold(new FHashMap<Integer, Integer>(), new FoldFunction<Integer, FMap<Integer, Integer>>(){
+            public FMap<Integer, Integer> apply(Integer element, FMap<Integer, Integer> init) {
+                init.put(element, element*3);
+                return init;
+            }
+        });
+        assertEquals(3, (int)resultMap.get(1));
+        assertEquals(9, (int)resultMap.get(3));
+		
+	}
+	
+	@Test
+    public void testReduce(){
+        FList<Integer> list = FLists.create(1,2,3);
+        int result = list.reduce(new FoldFunction<Integer, Integer>(){
+            public Integer apply(Integer element, Integer init) {
+                return element + init;
+            }
+        });
+        assertEquals(6, result);
+        
+        list = FLists.create(1,2,3);
+        result = list.reduce(new FoldFunction<Integer, Integer>(){
             public Integer apply(Integer element, Integer init) {
                 return element * init;
             }
         });
-        assertEquals(24, result);
-		
+        assertEquals(6, result);
+        
+        list = FLists.create(3);
+        result = list.reduce(new FoldFunction<Integer, Integer>(){
+            public Integer apply(Integer element, Integer init) {
+                return element * init;
+            }
+        });
+        assertEquals(3, result);
+        
 	}
+	
+	@Test(expected=RuntimeException.class)
+	public void testReduceOnEmptyList(){
+	    FList<Integer> list = FLists.create();
+        list.reduce(new FoldFunction<Integer, Integer>(){
+            public Integer apply(Integer element, Integer init) {
+                return element * init;
+            }
+        });
+	}
+	
+	@Test
+	public void testGroupBy(){
+	    FList<Integer> list = $(0,1,2,3,4,5,6,7,8);
+	    FMap<Integer, FList<Integer>> map = list.groupBy(new Function<Integer, Integer>() {
+            public Integer apply(Integer e) {
+                return e % 3;
+            }
+        });
+
+	    assertTrue(3 == map.keySet().size());
+	    assertTrue(map.get(0).size() == 3);
+	    assertTrue(map.get(1).size() == 3);
+	    assertTrue(map.get(2).contains(8));
+	}
+	
 
 	private FList<A> prepareList() {
 		List<A> list = new ArrayList<A>();

@@ -135,4 +135,17 @@ public interface FCollection<E> extends Collection<E> {
      * @return
      */
     FCollection<E> top(int n);
+    
+//    public String join(String seprator);
+    
+    /**
+     * Groups the collection by result of the function. 
+     * Returns a Map where the keys are the evaluated result from the function 
+     * and the values are arrays of elements in the collection that correspond to the key.
+     * 
+     * @param function
+     * @return
+     */
+    <T> FMap<T, FList<E>> groupBy(Function<E, T> function);
+    
 }

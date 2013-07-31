@@ -1,5 +1,6 @@
 package me.donnior.fava.util;
 
+import java.util.Collection;
 import java.util.List;
 
 import me.donnior.fava.FArrayList;
@@ -10,7 +11,7 @@ public final class FLists {
     private FLists() {
     }
 
-    public static <T> FList<T> create(List<T> array) {
+    public static <T> FList<T> create(Collection<T> array) {
         return new FArrayList<T>(array);
     }
 
@@ -21,7 +22,15 @@ public final class FLists {
         }
         return list;
     }
-
+    
+    public static <T> FList<T> $(T... t) {
+        return create(t);
+    }
+    
+    public static <T> FList<T> $(Collection<T> array){
+        return create(array);
+    }
+    
     public static <T> FList<T> newEmptyList() {
         return new FArrayList<T>();
     }
