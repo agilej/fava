@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.donnior.fava.Consumer;
 import me.donnior.fava.FList;
 import me.donnior.fava.util.FLists;
 
@@ -43,6 +44,10 @@ public class FListsTest {
         assertEquals(1001, range.size());
         assertTrue(0 == range.first());
         assertTrue(1000 == range.last());
+        
+        FList<String> sr = FLists.range('a', 'z');
+        assertEquals(26, sr.size());
+        assertEquals("b", sr.at(1));
     }
     
 }

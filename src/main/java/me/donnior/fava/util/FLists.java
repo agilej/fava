@@ -1,7 +1,6 @@
 package me.donnior.fava.util;
 
 import java.util.Collection;
-import java.util.List;
 
 import me.donnior.fava.FArrayList;
 import me.donnior.fava.FList;
@@ -46,4 +45,15 @@ public final class FLists {
         return array;
     }
 
+    public static FList<String> range(char start, char end){
+        if(start > end){
+            throw new IllegalArgumentException("a range's end must greater than start");
+        }
+        FArrayList<String> array = new FArrayList<String>();
+        for(char i=start; i<=end; i++){
+            array.add(String.valueOf(i));
+        }
+        return array;
+    }
+    
 }

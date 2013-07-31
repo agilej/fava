@@ -62,8 +62,38 @@ public interface FList<E> extends List<E>, FCollection<E> {
     @StateModified
     FList<E> push(E... elements);
 
+    /**
+     * Combines all elements of list by applying a binary operation, specified by a function.
+     * For each element in list the function is passed an accumulator value (memo) and the element. 
+     * The result of function's invocation becomes the new value for memo . 
+     * At the end of the iteration, the final value of memo is the return value for the method.
+     * 
+     * @param init the initial memo for function
+     * @param function
+     * @return
+     */
     <T> T fold(T init, FoldFunction<E, T> function);
     
+    /**
+     * 
+     * This method behaves like {@link #fold(Object, FoldFunction)}, except it use list's first element
+     * as the initial memo.
+     * 
+     * <br /><br />
+     * 
+     * Unlike {@link #fold(Object, FoldFunction)}, this method's function must has the same type for memo
+     * as the list's elements.
+     * 
+     * <br /><br />
+     * 
+     * Because this method will use the first element as the initial memo, so the list can't be empty,
+     * otherwise an {@link RuntimeException} will be throw. 
+     * 
+     * @param init the initial memo for function
+     * @param function
+     * @return
+     *
+     */
     E reduce(FoldFunction<E, E> function);
     
     /**
