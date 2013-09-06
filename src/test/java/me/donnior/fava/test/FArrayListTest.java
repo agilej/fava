@@ -28,7 +28,7 @@ public class FArrayListTest {
 
     @Test
     public void testIndexOf() {
-        FCollection<A> c = prepareList();
+        FList<A> c = prepareList();
         int index = c.indexOf(new Predicate<A>(){    
             public boolean apply(A a){
                 return a.i > 10;
@@ -264,9 +264,21 @@ public class FArrayListTest {
 		assertEquals(6, list.size());
 		assertTrue(5 == list.at(4));
 		
-		list.push(null);
+		list.push((Integer[])null);
 		assertEquals(6, list.size());
 	}		
+
+	   @Test
+	    public void testPush2(){
+	        FList<Integer> list = FLists.create(1,2,3);
+	        assertEquals(3, list.size());
+	        list.push(FLists.create(4,5,6));
+	        assertEquals(6, list.size());
+	        assertTrue(5 == list.at(4));
+	        
+	        list.push((List)null);
+	        assertEquals(6, list.size());
+	    }
 	
 	@Test
 	public void testSort(){
@@ -339,7 +351,6 @@ public class FArrayListTest {
         });
         assertEquals(3, (int)resultMap.get(1));
         assertEquals(9, (int)resultMap.get(3));
-		
 	}
 	
 	@Test
@@ -367,7 +378,6 @@ public class FArrayListTest {
             }
         });
         assertEquals(3, result);
-        
 	}
 	
 	@Test(expected=RuntimeException.class)

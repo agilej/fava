@@ -30,6 +30,12 @@ public interface FList<E> extends List<E>, FCollection<E> {
      */
     E last();
 
+    /**
+     * Returns the index of the first object for which the block returns true. 
+     * Returns -1 if no match is found.
+     */
+    int indexOf(Predicate<E> function);
+    
     E find(Predicate<E> function);
 
     void each(Consumer<E> function);
@@ -61,6 +67,15 @@ public interface FList<E> extends List<E>, FCollection<E> {
      */
     @StateModified
     FList<E> push(E... elements);
+    
+    /**
+     * add elements to end of the list with iteration
+     * 
+     * @param elements
+     * @return
+     */
+    @StateModified
+    FList<E> push(List<E> elements);
 
     /**
      * Combines all elements of list by applying a binary operation, specified by a function.
