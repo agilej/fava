@@ -145,6 +145,12 @@ public interface FList<E> extends List<E>, FCollection<E> {
     @StateModified
     FList<E> sort(Comparator<? super E> comparator);
     
+    /**
+     * 
+     * sort current list by element's some property, return it self.
+     * @param comparator
+     * @return
+     */
     @StateModified
     <T extends Comparable<T>> FList<E> sortBy(Function<E, T> function);
 
