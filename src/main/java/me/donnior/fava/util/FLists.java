@@ -14,12 +14,26 @@ public final class FLists {
         return new FArrayList<T>(array);
     }
 
+    public static <T> FList<T> safeCeate(Collection<T> array) {
+        if(array == null){
+           return newEmptyList(); 
+        }
+        return create(array);
+    }
+    
     public static <T> FList<T> create(T... t) {
         FList<T> list = new FArrayList<T>();
         for (T temp : t) {
             list.add(temp);
         }
         return list;
+    }
+    
+    public static <T> FList<T> safeCreate(T... t) {
+        if(t == null){
+            return newEmptyList();
+        }
+        return create(t);
     }
     
     public static <T> FList<T> $(T... t) {

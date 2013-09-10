@@ -14,6 +14,20 @@ import org.junit.Test;
 
 public class FListsTest {
 
+    @Test(expected=NullPointerException.class)
+    public void testCreateWithNull(){
+        FLists.create((List<Object>)null);
+    }
+    
+    @Test
+    public void testSafeCreat(){
+        List<?> list = FLists.safeCeate((List<Object>)null);
+        assertTrue(list.isEmpty());
+        
+        List<String> names = null;
+        assertTrue(FLists.safeCeate(names).isEmpty());
+    }
+    
     @Test
     public void testNewEmpty(){
         List<?> list = FLists.newEmptyList();
