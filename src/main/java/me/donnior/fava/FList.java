@@ -3,6 +3,8 @@ package me.donnior.fava;
 import java.util.Comparator;
 import java.util.List;
 
+import me.donnior.fava.util.StateModified;
+
 public interface FList<E> extends List<E>, FCollection<E> {
 
     /**

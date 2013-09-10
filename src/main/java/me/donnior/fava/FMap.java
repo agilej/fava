@@ -2,6 +2,8 @@ package me.donnior.fava;
 
 import java.util.Map;
 
+import me.donnior.fava.util.StateModified;
+
 public interface FMap<K, V> extends Map<K, V> {
 
     /**

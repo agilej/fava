@@ -2,6 +2,8 @@ package me.donnior.fava;
 
 import java.util.Collection;
 
+import me.donnior.fava.util.StateModified;
+
 public interface FCollection<E> extends Collection<E> {
 
     

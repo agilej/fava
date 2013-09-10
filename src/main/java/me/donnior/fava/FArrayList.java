@@ -8,6 +8,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+import me.donnior.fava.util.StateModified;
+
 public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 
     private static final long serialVersionUID = 1L;

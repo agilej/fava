@@ -1,4 +1,4 @@
-package me.donnior.fava;
+package me.donnior.fava.util;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;

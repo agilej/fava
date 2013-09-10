@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import me.donnior.fava.util.StateModified;
+
 public class FHashMap<K, V> extends HashMap<K, V> implements FMap<K, V> {
 
     /**
