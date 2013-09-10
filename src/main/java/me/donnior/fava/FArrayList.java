@@ -206,6 +206,18 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
         }
         return this;
     }
+    
+    public FList<E> plus(E... elements) {
+        FArrayList<E> result = new FArrayList<E>(this);
+        result.push(elements);
+        return result;
+    }
+    
+    public FList<E> plus(List<E> elements) {
+        FArrayList<E> result = new FArrayList<E>(this);
+        result.push(elements);
+        return result;
+    }
 
     public <T> T fold(T init, FoldFunction<E, T> function) {
         Iterator<E> it = this.iterator();

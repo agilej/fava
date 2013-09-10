@@ -257,7 +257,7 @@ public class FArrayListTest {
 	}
 
 	@Test
-	public void testPush(){
+	public void testPushWithArray(){
 		FList<Integer> list = FLists.create(1,2,3);
 		assertEquals(3, list.size());
 		list.push(4,5,6);
@@ -268,19 +268,49 @@ public class FArrayListTest {
 		assertEquals(6, list.size());
 	}		
 
-	   @Test
-	    public void testPush2(){
-	        FList<Integer> list = FLists.create(1,2,3);
-	        assertEquals(3, list.size());
-	        list.push(FLists.create(4,5,6));
-	        assertEquals(6, list.size());
-	        assertTrue(5 == list.at(4));
-	        
-	        list.push((List)null);
-	        assertEquals(6, list.size());
-	    }
+    @Test
+    public void testPushWithList(){
+        FList<Integer> list = FLists.create(1,2,3);
+        assertEquals(3, list.size());
+        list.push(FLists.create(4,5,6));
+        assertEquals(6, list.size());
+        assertTrue(5 == list.at(4));
+        
+        list.push((List<Integer>)null);
+        assertEquals(6, list.size());
+    }
 	
-	@Test
+    @Test
+    public void testPlusWithList(){
+        FList<Integer> list = FLists.create(1,2,3);
+        assertEquals(3, list.size());
+        
+        FList<Integer> result = list.plus(FLists.create(4,5,6));
+        assertEquals(3, list.size());
+        assertEquals(6, result.size());
+        assertTrue(5 == result.at(4));
+       
+        assertFalse(list == result);
+       
+        assertEquals(3, list.plus((List<Integer>)null).size());
+    }
+
+    @Test
+    public void testPlusWithArray(){
+        FList<Integer> list = FLists.create(1,2,3);
+        assertEquals(3, list.size());
+        
+        FList<Integer> result = list.plus(4,5,6);
+        assertEquals(3, list.size());
+        assertEquals(6, result.size());
+        assertTrue(5 == result.at(4));
+       
+        assertFalse(list == result);
+       
+        assertEquals(3, list.plus((Integer[])null).size());
+    }
+    
+    @Test
 	public void testSort(){
 	    FList<Integer> list = FLists.create(2,3,1,5,6,4,8,7);
 	    list = list.sort(new Comparator<Integer>() {

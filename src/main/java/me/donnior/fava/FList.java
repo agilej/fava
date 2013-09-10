@@ -76,6 +76,29 @@ public interface FList<E> extends List<E>, FCollection<E> {
      */
     @StateModified
     FList<E> push(List<E> elements);
+    
+    /**
+     * Unlike {@link FList#push(List)}, this method will return a new list with all list's elements 
+     * and the given plus elements.
+     * 
+     * <br />
+     * 
+     * @param elements
+     * @return
+     */
+    @StateModified
+    FList<E> plus(E... elements);
+    
+    /**
+     * Unlike {@link FList#push(List)}, this method will return a new list with all list's elements 
+     * and the given plus elements.
+     * 
+     * @param elements
+     * @return
+     */
+    @StateModified
+    FList<E> plus(List<E> elements);
+    
 
     /**
      * Combines all elements of list by applying a binary operation, specified by a function.
