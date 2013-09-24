@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+import me.donnior.fava.util.Numbers;
 import me.donnior.fava.util.StateModified;
 
 public class FArrayList<E> extends ArrayList<E> implements FList<E> {
@@ -277,4 +278,17 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
         });
         return map;
     }
+    
+    @Override
+    public <T extends Number> T sum(Function<E, T> function) {
+        Iterator<E> it = this.iterator();
+        T result  = null;
+        while (it.hasNext()) {
+            E e = it.next();
+            result = Numbers.plus(result, function.apply(e));
+        }
+        return result;
+    }
+    
+
 }

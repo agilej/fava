@@ -435,6 +435,18 @@ public class FArrayListTest {
 	    assertTrue(map.get(2).contains(8));
 	}
 	
+	@Test
+	public void testSum(){
+	    FList<A> list = prepareList();
+	    int sum = list.sum(new Function<A, Integer>(){
+            @Override
+            public Integer apply(A e) {
+                return e.i;
+            }
+	    });
+	    assertEquals(254, sum);
+	}
+	
 
 	private FList<A> prepareList() {
 		List<A> list = new ArrayList<A>();

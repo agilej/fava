@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'maven'
+apply plugin: 'jdepend'
 
 group = 'me.donnior'
 version = '1.1'
