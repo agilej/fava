@@ -154,6 +154,12 @@ public interface FList<E> extends List<E>, FCollection<E> {
     @StateModified
     <T extends Comparable<T>> FList<E> sortBy(Function<E, T> function);
     
+    /**
+     * Calculates a sum from the elements.
+     * 
+     * @param function
+     * @return
+     */
     <T extends Number> T sum(Function<E, T> function);
 
 }
