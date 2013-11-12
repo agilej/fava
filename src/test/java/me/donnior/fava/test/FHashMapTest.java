@@ -1,9 +1,9 @@
 package me.donnior.fava.test;
 
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +19,7 @@ public class FHashMapTest {
 
     @Test
     public void testEach() {
-        final FMap<Integer, String> c = prepareList();
+        final FMap<Integer, String> c = prepareMap();
         assertEquals("10", c.get(10));
         c.each(new MConsumer<Integer, String>() {
             public void apply(Integer key, String value) {
@@ -35,7 +35,7 @@ public class FHashMapTest {
 
     @Test
     public void testDeleteIf() {
-        FMap<Integer, String> c = prepareList();
+        FMap<Integer, String> c = prepareMap();
         c.deleteIf(new MPredicate<Integer, String>() {
             public boolean apply(Integer key, String value) {
                 return key < 10;
@@ -47,7 +47,7 @@ public class FHashMapTest {
 
     @Test
     public void testReject() {
-        FMap<Integer, String> c = prepareList();
+        FMap<Integer, String> c = prepareMap();
         FMap<Integer, String> result = c
                 .reject(new MPredicate<Integer, String>() {
                     public boolean apply(Integer key, String value) {
@@ -61,7 +61,7 @@ public class FHashMapTest {
 
     @Test
     public void testSelect() {
-        FMap<Integer, String> c = prepareList();
+        FMap<Integer, String> c = prepareMap();
         FMap<Integer, String> result = c.select(new MPredicate<Integer, String>() {
             public boolean apply(Integer key, String value) {
                 return key > 10;
@@ -73,7 +73,7 @@ public class FHashMapTest {
 
     @Test
     public void testMerge() {
-        FMap<Integer, String> c = prepareList();
+        FMap<Integer, String> c = prepareMap();
 
         Map<Integer, String> mapToMerge = new HashMap<Integer, String>();
         mapToMerge.put(1, "one");
@@ -86,7 +86,7 @@ public class FHashMapTest {
 
     @Test
     public void testFindKey() {
-        FMap<Integer, String> c = prepareList();
+        FMap<Integer, String> c = prepareMap();
         Integer result = c.findKey(new MPredicate<Integer, String>() {
             public boolean apply(Integer key, String value) {
                 return key > 100;
@@ -104,7 +104,7 @@ public class FHashMapTest {
     
     @Test
     public void testFindEntry() {
-        FMap<Integer, String> c = prepareList();
+        FMap<Integer, String> c = prepareMap();
         Map.Entry<Integer, String> result = c.findEntry(new MPredicate<Integer, String>() {
             public boolean apply(Integer key, String value) {
                 return key > 100;
@@ -121,13 +121,12 @@ public class FHashMapTest {
         assertNull(result);
     }    
 
-    private FMap<Integer, String> prepareList() {
+    private FMap<Integer, String> prepareMap() {
         FMap<Integer, String> map = new FHashMap<Integer, String>();
         map.put(1, "1");
         map.put(10, "10");
         map.put(1000, "1000");
         return map;
-        // return FLists.create(new A(8), new A(12), new A(234));
     }
 
 }

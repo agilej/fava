@@ -15,7 +15,9 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
 
     private static final long serialVersionUID = 1L;
 
-    public FArrayList() {}
+    public FArrayList() {
+        super();
+    }
 
     public FArrayList(Collection<E> list) {
         super(list);

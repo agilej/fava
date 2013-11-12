@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.donnior.fava.Consumer;
 import me.donnior.fava.FList;
 import me.donnior.fava.util.FLists;
 
@@ -21,11 +20,11 @@ public class FListsTest {
     
     @Test
     public void testSafeCreat(){
-        List<?> list = FLists.safeCeate((List<Object>)null);
+        List<?> list = FLists.safeCreate((List<Object>)null);
         assertTrue(list.isEmpty());
         
         List<String> names = null;
-        assertTrue(FLists.safeCeate(names).isEmpty());
+        assertTrue(FLists.safeCreate(names).isEmpty());
     }
     
     @Test
@@ -55,7 +54,9 @@ public class FListsTest {
     @Test
     public void testCreateWithRange(){
         FList<Integer> range = FLists.range(0, 1000);
+        
         assertEquals(1001, range.size());
+        
         assertTrue(0 == range.first());
         assertTrue(1000 == range.last());
         
