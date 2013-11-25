@@ -88,7 +88,6 @@ public interface FList<E> extends List<E>, FCollection<E> {
      * @param elements
      * @return
      */
-    @StateModified
     FList<E> plus(E... elements);
     
     /**
@@ -98,7 +97,6 @@ public interface FList<E> extends List<E>, FCollection<E> {
      * @param elements
      * @return
      */
-    @StateModified
     FList<E> plus(List<E> elements);
     
 
