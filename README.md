@@ -7,12 +7,14 @@ The two essential class is `FList` and `FArrayList`. `FList` extends JDK's `List
 ### Create Fava List
 
 Create from exist list
+
 ```java
     List originalList = ....   //JDK list
     FList fList = new FArrayList(originalList);
 ```
 
 Because `FArrayList` extends `ArrayList`, you also can create it directly
+
 ```java
     List<String> fList = new FArrayList<String>();
     fList.add("one");  //use jdk's function
@@ -33,7 +35,7 @@ Each operation
         }
     });
 ```
-    
+
 Find the first element match the Predicate
 
 ```java
@@ -43,7 +45,7 @@ Find the first element match the Predicate
         }
     });
 ```
-    
+
 Find all elements match the Predicate
 
 ```java
@@ -52,7 +54,8 @@ Find all elements match the Predicate
             return e % 2 == 0;  //the int value is even
         }
     });    
-   ``` 
+``` 
+
 Convert list to another different type list, use `map()` or `collect()`
 
 ```java
@@ -71,8 +74,8 @@ Judge is there any element match Predicate
             return e > 3;
         }
     });
-   ```
- 
+```
+
 Judge all elements match Predicate
 
 ```java
@@ -81,7 +84,8 @@ Judge all elements match Predicate
             return e > 3;
         }
     });
-   ``` 
+``` 
+
 Fold operation, such as sum list
 
 ```java
@@ -90,8 +94,8 @@ Fold operation, such as sum list
             return element + init;
         }
     });
-   ``` 
-    
+``` 
+
 There are more functions such as `reject`, `deleteIf`, please see Fava' java doc.     
 
 ### Functions in fava
