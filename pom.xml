@@ -4,7 +4,7 @@
 	<groupId>me.donnior</groupId>
 	<artifactId>fava</artifactId>
 	<packaging>jar</packaging>
-	<version>1.1</version>
+	<version>1.2</version>
 	<name>fava</name>
 	<url>http://maven.apache.org</url>
 
@@ -51,8 +51,8 @@
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>1.8</source>
+					<target>1.8</target>
 					<encoding>UTF-8</encoding>
 					<fork>true</fork>
 					<compilerArguments>

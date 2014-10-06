@@ -248,7 +248,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
     }
     
     @StateModified
-    public FList<E> sort(Comparator<? super E> comparator) {
+    public FList<E> sort2(Comparator<? super E> comparator) {
         Collections.sort(this, comparator);
         return this;
     }

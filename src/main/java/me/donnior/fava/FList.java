@@ -141,7 +141,7 @@ public interface FList<E> extends List<E>, FCollection<E> {
      * @return
      */
     @StateModified
-    FList<E> sort(Comparator<? super E> comparator);
+    FList<E> sort2(Comparator<? super E> comparator);
     
     /**
      * 

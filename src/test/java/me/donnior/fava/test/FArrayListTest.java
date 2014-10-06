@@ -313,7 +313,7 @@ public class FArrayListTest {
     @Test
 	public void testSort(){
 	    FList<Integer> list = FLists.create(2,3,1,5,6,4,8,7);
-	    list = list.sort(new Comparator<Integer>() {
+	    list = list.sort2(new Comparator<Integer>() {
             
             @Override
             public int compare(Integer o1, Integer o2) {
