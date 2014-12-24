@@ -1,6 +1,6 @@
 Fava is a functional  library for java, it's an extention for Java collection framework.
 
-## User Fava List
+## Use Fava List
 
 The two essential class is `FList` and `FArrayList`. `FList` extends JDK's `List`, `FArrayList` extends `ArrayList`
 
@@ -66,7 +66,7 @@ Convert list to another different type list, use `map()` or `collect()`
     });
 ```
 
-Judge is there any element match Predicate
+Test is there any element match Predicate
 
 ```java
     boolean hasAnyBiggerThanThree = ints.any(new Predicate<Integer>(){
@@ -76,7 +76,7 @@ Judge is there any element match Predicate
     });
 ```
 
-Judge all elements match Predicate
+Test all elements match Predicate
 
 ```java
     boolean allBiggerThanThree = ints.all(new Predicate<Integer>(){
@@ -103,5 +103,6 @@ There are more functions such as `reject`, `deleteIf`, please see Fava' java doc
 There are three basic function shape in fava. 
 
 * _Consumer_  - operate on object and not return
-* _Predicate_ - operate on object and return bool value
-* _Function_ - operaton on object and return another value
+* _Predicate_ - operate on object and return boolean value
+* _Function_  - operate on object and return value with other type 
+ 
