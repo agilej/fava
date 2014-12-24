@@ -136,9 +136,12 @@ public interface FList<E> extends List<E>, FCollection<E> {
     
     /**
      * 
-     * sort current list and return it self.
+     * sort current list and return it self. <br />
+     * This method name was changed to sort2 because List in java8 has a built-in sort method
+     * 
+     * 
      * @param comparator
-     * @return
+     * @return the caller itself
      */
     @StateModified
     FList<E> sort2(Comparator<? super E> comparator);
@@ -147,7 +150,7 @@ public interface FList<E> extends List<E>, FCollection<E> {
      * 
      * sort current list by element's some property, return it self.
      * @param comparator
-     * @return
+     * @return the caller itself
      */
     @StateModified
     <T extends Comparable<T>> FList<E> sortBy(Function<E, T> function);
