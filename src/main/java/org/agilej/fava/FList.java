@@ -64,8 +64,8 @@ public interface FList<E> extends List<E>, FCollection<E> {
     /**
      * add elements to end of the list with iteration
      * 
-     * @param elements
-     * @return
+     * @param elements elements to be added to the caller list
+     * @return the caller list itself
      */
     @StateModified
     FList<E> push(E... elements);
@@ -73,8 +73,8 @@ public interface FList<E> extends List<E>, FCollection<E> {
     /**
      * add elements to end of the list with iteration
      * 
-     * @param elements
-     * @return
+     * @param elements elements to be added to the caller list
+     * @return the caller list itself
      */
     @StateModified
     FList<E> push(List<E> elements);
@@ -86,7 +86,7 @@ public interface FList<E> extends List<E>, FCollection<E> {
      * <br />
      * 
      * @param elements
-     * @return
+     * @return new list contains both the caller's elements and the params elements
      */
     FList<E> plus(E... elements);
     
@@ -95,7 +95,7 @@ public interface FList<E> extends List<E>, FCollection<E> {
      * and the given plus elements.
      * 
      * @param elements
-     * @return
+     * @return new list contains both the caller's elements and the params elements
      */
     FList<E> plus(List<E> elements);
     
@@ -126,8 +126,7 @@ public interface FList<E> extends List<E>, FCollection<E> {
      * 
      * Because this method will use the first element as the initial memo, so the list can't be empty,
      * otherwise an {@link RuntimeException} will be throw. 
-     * 
-     * @param init the initial memo for function
+     *
      * @param function
      * @return
      *
@@ -149,7 +148,7 @@ public interface FList<E> extends List<E>, FCollection<E> {
     /**
      * 
      * sort current list by element's some property, return it self.
-     * @param comparator
+     * @param function function can return a comparable value
      * @return the caller itself
      */
     @StateModified

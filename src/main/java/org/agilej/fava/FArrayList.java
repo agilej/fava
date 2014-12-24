@@ -237,7 +237,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
     public E reduce(FoldFunction<E, E> function) {
         Iterator<E> it = this.iterator();
         if(!it.hasNext()){
-            throw new RuntimeException("reduce operation can'b be called with empty array");
+            throw new RuntimeException("reduce operation can't be called with empty array");
         }
         E result = it.next();
         while (it.hasNext()) {
