@@ -11,7 +11,7 @@ public interface FMap<K, V> extends Map<K, V> {
      * map is changed instantly every time the block is called and not after the
      * iteration is over
      * 
-     * @param predict
+     * @param predicate
      * @return
      */
     @StateModified
@@ -38,7 +38,7 @@ public interface FMap<K, V> extends Map<K, V> {
      * Returns a new map containing the items in self for which the block is not
      * true
      * 
-     * @param predict
+     * @param predicate
      * @return
      */
     FMap<K, V> reject(MPredicate<K, V> predicate);
@@ -47,22 +47,22 @@ public interface FMap<K, V> extends Map<K, V> {
      * 
      * Return a new map with copy of all elements match the predict
      * 
-     * @param predict
+     * @param predicate
      * @return
      */
     FMap<K, V> findAll(MPredicate<K, V> predicate);
 
     /**
-     * alias method for {@link #findAll(Predict)}
+     * alias method for {@link #findAll(MPredicate)}
      * 
-     * @param predict
+     * @param predicate
      * @return
      */
     FMap<K, V> select(MPredicate<K, V> predicate);
     
     /**
      * find the first entry key which match the predicate
-     * @param predictate
+     * @param predicate
      * @return
      */
     K findKey(MPredicate<K,V> predicate);
