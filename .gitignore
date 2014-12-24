@@ -24,3 +24,9 @@ gradlew.bat
 src/main/java/Benchmark.java
 
 src/test/java/me/donnior/fava/test/MainTest.java
+
+fava.iml
+
+fava.ipr
+
+fava.iws
