@@ -4,7 +4,7 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
 
 /**
- *One Annotation indicate that  method will modify self's state.  
+ * Annotation to indicate the method will change self's state.
  *
  */
 @Target({ElementType.METHOD})
