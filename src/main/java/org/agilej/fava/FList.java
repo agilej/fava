@@ -10,6 +10,11 @@ public interface FList<E> extends List<E>, FCollection<E> {
     /**
      * get the element at the given index. The index can be negative, then will
      * get element at `size + index`
+     *
+     * <br />
+     * <br />
+     *
+     * For example <tt>fList.at(-1)</tt> will return the last element
      * 
      * @param index
      * @return
