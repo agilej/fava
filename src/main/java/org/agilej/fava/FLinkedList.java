@@ -1,26 +1,23 @@
 package org.agilej.fava;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-
 import org.agilej.fava.util.Numbers;
 import org.agilej.fava.util.StateModified;
 
-public class FArrayList<E> extends ArrayList<E> implements FList<E> {
+import java.util.*;
 
-    private static final long serialVersionUID = 1L;
 
-    public FArrayList() {
+public class FLinkedList<E> extends LinkedList<E> implements FList<E> {
+
+    public FLinkedList(){
         super();
     }
 
-    public FArrayList(Collection<E> list) {
+    public FLinkedList(List list){
         super(list);
+    }
+
+    public FLinkedList(Collection collection){
+        super(collection);
     }
 
     public int indexOf(Predicate<E> function) {
@@ -34,7 +31,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
         }
         return -1;
     }
-    
+
     public E find(Predicate<E> function) {
         Iterator<E> it = this.iterator();
         while (it.hasNext()) {
@@ -77,8 +74,8 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
             function.apply(it.next());
         }
     }
-    
-    
+
+
     public void eachIndex(Consumer<Integer> function) {
         Iterator<E> it = this.iterator();
         int index = 0;
@@ -87,7 +84,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
             function.apply(index++);
         }
     }
-    
+
     public E at(int index) {
         if (index >= 0) {
             return this.get(index);
@@ -201,7 +198,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
         }
         return this;
     }
-    
+
     @StateModified
     public FList<E> push(List<E> elements) {
         if (elements != null) {
@@ -211,13 +208,13 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
         }
         return this;
     }
-    
+
     public FList<E> plus(E... elements) {
         FArrayList<E> result = new FArrayList<E>(this);
         result.push(elements);
         return result;
     }
-    
+
     public FList<E> plus(List<E> elements) {
         FArrayList<E> result = new FArrayList<E>(this);
         result.push(elements);
@@ -233,7 +230,7 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
         }
         return result;
     }
-    
+
     public E reduce(FoldFunction<E, E> function) {
         Iterator<E> it = this.iterator();
         if(!it.hasNext()){
@@ -246,13 +243,13 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
         }
         return result;
     }
-    
+
     @StateModified
     public FList<E> sort2(Comparator<? super E> comparator) {
         Collections.sort(this, comparator);
         return this;
     }
-    
+
     @StateModified
     public <T extends Comparable<T>> FList<E> sortBy(final Function<E, T> function) {
         Comparator<E> c = new Comparator<E>() {
@@ -272,15 +269,15 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
                 T t = function.apply(e);
                 FList<E> list = map.get(t);
                 if(list == null){
-                   map.put(t, new FArrayList<E>());
-                   list = map.get(t);
+                    map.put(t, new FArrayList<E>());
+                    list = map.get(t);
                 }
                 list.add(e);
             }
         });
         return map;
     }
-    
+
     @Override
     public <T extends Number> T sum(Function<E, T> function) {
         Iterator<E> it = this.iterator();
@@ -313,4 +310,5 @@ public class FArrayList<E> extends ArrayList<E> implements FList<E> {
     public String join() {
         return join(null);
     }
+
 }

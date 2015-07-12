@@ -145,5 +145,27 @@ public interface FCollection<E> extends Collection<E> {
      * @return
      */
     <T> FMap<T, FList<E>> groupBy(Function<E, T> function);
+
+    /**
+     *
+     * Returns a string created by converting each element of the array to a string,
+     * separated by the given separator.
+     * If the separator is null, it will uses empty string.
+     *
+     * @param separator the joiner string to concat elements
+     * @return
+     */
+    String join(String separator);
+
+    /**
+     *
+     * Returns a string created by converting each element of the array to a string,
+     * separated by empty string.
+     *
+     * @return
+     *
+     * @see #join(String)
+     */
+    String join();
     
 }

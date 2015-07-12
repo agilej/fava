@@ -445,7 +445,23 @@ public class FArrayListTest {
 	    });
 	    assertEquals(254, sum);
 	}
-	
+
+	@Test
+	public void testJoin(){
+		FList<Integer> integers = $(1, 2, 3, 4);
+		assertEquals("1-2-3-4", integers.join("-"));
+
+		assertEquals("1234", integers.join(null));
+		assertEquals("1234", integers.join());
+
+		integers = $();
+		assertEquals("", integers.join("-"));
+
+		integers = $(1);
+		assertEquals("1", integers.join("-"));
+
+	}
+
 
 	private FList<A> prepareList() {
 		List<A> list = new ArrayList<A>();
@@ -455,15 +471,17 @@ public class FArrayListTest {
 		return FLists.create(list);
 	}
 
+	static class A{
+		public int i;
+		public A(int i){ this.i = i; }
+	}
+
+	static class B{
+		public int i;
+		public B(int i){ this.i = i; }
+	}
+
 }
 
-class A{
-	public int i;
-	public A(int i){ this.i = i; }
-}
 
 
-class B{
-	public int i;
-	public B(int i){ this.i = i; }
-}
