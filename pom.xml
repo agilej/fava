@@ -4,7 +4,7 @@
 	<groupId>org.agilej</groupId>
 	<artifactId>fava</artifactId>
 	<packaging>jar</packaging>
-	<version>0.1</version>
+	<version>0.1-SNAPSHOT</version>
 	<name>fava</name>
 	<url>http://maven.apache.org</url>
 	<description>Fava is a simple java library making JCF functional</description>

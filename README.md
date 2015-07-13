@@ -1,3 +1,5 @@
+[![Build Status](https://drone.io/github.com/agilej/fava/status.png)](https://drone.io/github.com/agilej/fava/latest)
+
 Fava is a functional  library for java, it's an extention for Java collection framework.
 
 ## Use Fava List
