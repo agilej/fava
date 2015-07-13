@@ -4,8 +4,8 @@ public interface Consumer<E> {
 
     /**
      * consume one object
-     * @param e
+     * @param object the object this consumer will perform on
      */
-    void apply(E e);
+    void apply(E object);
 
 }

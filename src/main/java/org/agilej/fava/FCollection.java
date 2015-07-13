@@ -9,29 +9,28 @@ public interface FCollection<E> extends Collection<E> {
     
     
     /**
-     * Return the first element which match the predict
+     * Return the first element which match the predicate
      * 
      * @param function
-     * @return
+     * @return the first element which match the predicate
      */
     E find(Predicate<E> function);
 
     /**
      * 
-     * Return a copy of all elements match the predict
+     * Return a copy of all elements match the predicate
      * 
-     * @param predict
-     * @return
+     * @param predicate
+     * @return a copy of all elements match the predicate
      */
-    FCollection<E> findAll(Predicate<E> predict);
+    FCollection<E> findAll(Predicate<E> predicate);
 
     /**
      * alias method for {@link #findAll(Predicate)}
      * 
-     * @param predict
-     * @return
+     * @see #findAll(Predicate)
      */
-    FCollection<E> select(Predicate<E> predict);
+    FCollection<E> select(Predicate<E> predicate);
 
     /**
      * Deletes every element of self for which predict evaluates to true. The
@@ -42,11 +41,11 @@ public interface FCollection<E> extends Collection<E> {
      * This method is different from {@link #reject(Predicate)}, it will change 
      * the caller list self.
      * 
-     * @param predict
-     * @return
+     * @param predicate the predicate to delete element
+     * @return the call list itself with elements matched predicate removed
      */
     @StateModified
-    FCollection<E> deleteIf(Predicate<E> predict);
+    FCollection<E> deleteIf(Predicate<E> predicate);
 
     /**
      * Returns a new collection containing the items in self for which the block
@@ -56,35 +55,33 @@ public interface FCollection<E> extends Collection<E> {
      * This method is different from {@link #deleteIf(Predicate)}, it will not 
      * change the caller list, the result list is a new list.
      * 
-     * @param predict
-     * @return
+     * @param predicate
+     * @return a new collection containing the items in self for which the predicate is not true
      */
-    FCollection<E> reject(Predicate<E> predict);
+    FCollection<E> reject(Predicate<E> predicate);
 
     /**
      * Invokes function once for each element of self. Creates a new array
      * containing the values returned by the function
      * 
-     * @param function
+     * @param mapper mapper to convert one element to another type
      * @return
      */
-    <T> FCollection<T> collect(Function<E, T> function);
+    <T> FCollection<T> collect(Function<E, T> mapper);
 
     /**
      * alias method for {@link #collect(Function)}
-     * 
-     * @param function
-     * @return
+     *
      */
-    <T> FCollection<T> map(Function<E, T> function);
+    <T> FCollection<T> map(Function<E, T> mapper);
 
     /**
      * Calls function once for each element in self, passing that element as a
      * parameter.
      * 
-     * @param function
+     * @param action the action to perform on each element
      */
-    void each(Consumer<E> function);
+    void each(Consumer<E> action);
     
     /**
      * Same as {@link #each}, but passes the index of the element instead of the element itself. 
@@ -95,7 +92,7 @@ public interface FCollection<E> extends Collection<E> {
     /**
      * Returns a copy of self with all null elements removed.
      * 
-     * @return
+     * @return a copy of self with all null elements removed
      */
     FCollection<E> compact();
 
@@ -103,34 +100,34 @@ public interface FCollection<E> extends Collection<E> {
      * Passes each element of the collection to the function. The method returns
      * true if the function is matched.
      * 
-     * @param function
-     * @return
+     * @param predicate
+     * @return return true if there is any every element match the given predicate
      */
-    boolean any(Predicate<E> function);
+    boolean any(Predicate<E> predicate);
 
     /**
      * Passes each element of the collection to the given function. The method
      * returns true if the block never returns false.
      * 
-     * @param function
-     * @return
+     * @param predicate
+     * @return return true if all every element match the given predicate
      */
-    boolean all(Predicate<E> function);
+    boolean all(Predicate<E> predicate);
 
     /**
      * With a function is given, counts the number of elements yielding a true
      * value
      * 
-     * @param function
-     * @return
+     * @param predicate
+     * @return counts the number of elements which match the given predicate
      */
-    int count(Predicate<E> function);
+    int count(Predicate<E> predicate);
 
     /**
      * Returns a copy of first n elements from collection. If n is bigger than
      * collection size, return a copy of all elements.
      * 
-     * @return
+     * @return a copy of first n elements from collection
      */
     FCollection<E> top(int n);
     
@@ -142,7 +139,7 @@ public interface FCollection<E> extends Collection<E> {
      * and the values are arrays of elements in the collection that correspond to the key.
      * 
      * @param function
-     * @return
+     * @return a grouped map
      */
     <T> FMap<T, FList<E>> groupBy(Function<E, T> function);
 
@@ -152,8 +149,9 @@ public interface FCollection<E> extends Collection<E> {
      * separated by the given separator.
      * If the separator is null, it will uses empty string.
      *
-     * @param separator the joiner string to concat elements
-     * @return
+     * @param separator the separator used to concat element strings
+     *
+     * @return joined string
      */
     String join(String separator);
 
@@ -162,7 +160,6 @@ public interface FCollection<E> extends Collection<E> {
      * Returns a string created by converting each element of the array to a string,
      * separated by empty string.
      *
-     * @return
      *
      * @see #join(String)
      */

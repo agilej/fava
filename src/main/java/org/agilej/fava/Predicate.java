@@ -5,8 +5,8 @@ public interface Predicate<E> {
      *
      * test the given object match one predicate
      *
-     * @param e
-     * @return
+     * @param object
+     * @return true if this predicate match the given object
      */
-    boolean apply(E e);
+    boolean apply(E object);
 }

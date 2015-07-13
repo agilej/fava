@@ -16,8 +16,8 @@ public interface FList<E> extends List<E>, FCollection<E> {
      *
      * For example <tt>fList.at(-1)</tt> will return the last element
      * 
-     * @param index
-     * @return
+     * @param index index for one element, start from 0, can be negative
+     * @return element at the index
      */
     E at(int index);
 
@@ -40,9 +40,12 @@ public interface FList<E> extends List<E>, FCollection<E> {
     /**
      * Returns the index of the first object for which the block returns true. 
      * Returns -1 if no match is found.
+     *
+     * @return the first index for element match the predicate, -1 if no one matched
+     *
      */
     int indexOf(Predicate<E> function);
-    
+
     E find(Predicate<E> function);
 
     void each(Consumer<E> function);
@@ -113,7 +116,7 @@ public interface FList<E> extends List<E>, FCollection<E> {
      * 
      * @param init the initial memo for function
      * @param function
-     * @return
+     * @return fold result
      */
     <T> T fold(T init, FoldFunction<E, T> function);
     
@@ -133,7 +136,7 @@ public interface FList<E> extends List<E>, FCollection<E> {
      * otherwise an {@link RuntimeException} will be throw. 
      *
      * @param function
-     * @return
+     * @return reduce result
      *
      */
     E reduce(FoldFunction<E, E> function);
@@ -163,7 +166,7 @@ public interface FList<E> extends List<E>, FCollection<E> {
      * Calculates a sum from the elements.
      * 
      * @param function
-     * @return
+     * @return sum
      */
     <T extends Number> T sum(Function<E, T> function);
 
